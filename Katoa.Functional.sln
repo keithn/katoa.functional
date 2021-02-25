@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katoa.Functional", "Katoa.Functional\Katoa.Functional.csproj", "{224CC6E7-5E4B-47F6-B66D-D6553C9E8A9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katoa.Functional.Tests", "Katoa.Functional.Tests\Katoa.Functional.Tests.csproj", "{D5B80EC8-0151-4767-8AC1-9022D477A8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{CCD3AF2B-7F12-454D-9B61-B5F7E6EFBDF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{224CC6E7-5E4B-47F6-B66D-D6553C9E8A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224CC6E7-5E4B-47F6-B66D-D6553C9E8A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224CC6E7-5E4B-47F6-B66D-D6553C9E8A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224CC6E7-5E4B-47F6-B66D-D6553C9E8A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B80EC8-0151-4767-8AC1-9022D477A8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B80EC8-0151-4767-8AC1-9022D477A8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B80EC8-0151-4767-8AC1-9022D477A8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B80EC8-0151-4767-8AC1-9022D477A8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCD3AF2B-7F12-454D-9B61-B5F7E6EFBDF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD3AF2B-7F12-454D-9B61-B5F7E6EFBDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD3AF2B-7F12-454D-9B61-B5F7E6EFBDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD3AF2B-7F12-454D-9B61-B5F7E6EFBDF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
