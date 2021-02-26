@@ -2,19 +2,20 @@
 
 namespace Katoa.Functional
 {
-    public abstract record Result<T, TFailure>
+    public abstract record Failure;
+    public abstract record Result<T >
     {
-        public record Ok(T Value) : Result<T, TFailure>;
+        public record Ok(T Value) : Result<T>;
 
-        public record Error(TFailure Failure) : Result<T, TFailure>;
+        public record Error(Failure Failure) : Result<T>;
 
         // Map a value to a result
-        public static Result<T, TFailure> Map(T t) => new Ok(t);
+        public static Result<T> Map(T t) => new Ok(t);
 
         // Map an Action to a result
-        public static Func<T, Result<T, TFailure>> Map(Action<T> action)
+        public static Func<T, Result<T>> Map(Action<T> action)
         {
-            Result<T, TFailure> Func(T r)
+            Result<T> Func(T r)
             {
                 action(r);
                 return new Ok(r);
@@ -22,11 +23,11 @@ namespace Katoa.Functional
             return Func;
         }
 
-        public static Func<T, Result<B, TFailure>> Map<B>(Func<T, B> f)
+        public static Func<T, Result<B>> Map<B>(Func<T, B> f)
         {
-            Result<B, TFailure> Func(T r)
+            Result<B> Func(T r)
             {
-                return new Result<B, TFailure>.Ok(f(r));
+                return new Result<B>.Ok(f(r));
             }
 
             return Func;
@@ -35,27 +36,27 @@ namespace Katoa.Functional
 
     public static class ResultExtensions
     {
-        public static Result<B, TF> Then<A, B, TF>(this Result<A, TF> r, Func<A, B> f1) =>
-            r.Then(Result<A, TF>.Map(f1));
+        public static Result<B> Then<A, B>(this Result<A> r, Func<A, B> f1) =>
+            r.Then(Result<A>.Map(f1));
 
-        public static Result<B, TF> Then<A, B, TF>(this Result<A, TF> r, Func<A, Result<B, TF>> f1)
+        public static Result<B> Then<A, B>(this Result<A> r, Func<A, Result<B>> f1)
         {
             return r switch
             {
-                Result<A, TF>.Ok (var value) => f1(value),
-                Result<A, TF>.Error error => new Result<B, TF>.Error(error.Failure)
+                Result<A>.Ok (var value) => f1(value),
+                Result<A>.Error error => new Result<B>.Error(error.Failure)
             };
         }
 
-        public static Result<B, TF> Pipe<A, B, TF>(this Result<A, TF> r, Func<A, Result<B, TF>> f1) => Then(r, f1);
+        public static Result<B> Pipe<A, B>(this Result<A> r, Func<A, Result<B>> f1) => Then(r, f1);
 
-        public static Result<C, TF> Pipe<A, B, C, TF>(this Result<A, TF> r, Func<A, Result<B, TF>> f1,
-            Func<B, Result<C, TF>> f2)
+        public static Result<C> Pipe<A, B, C>(this Result<A> r, Func<A, Result<B>> f1,
+            Func<B, Result<C>> f2)
         {
             return Pipe(r switch
             {
-                Result<A, TF>.Ok (var value) => f1(value),
-                Result<A, TF>.Error error => new Result<B, TF>.Error(error.Failure)
+                Result<A>.Ok (var value) => f1(value),
+                Result<A>.Error error => new Result<B>.Error(error.Failure)
             }, f2);
         }
     }
